@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, ControllerRenderProps } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import {
   Form,
   FormControl,
@@ -78,142 +79,167 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="firstName"
-          render={({
-            field,
-          }: {
-            field: ControllerRenderProps<FormValues, "firstName">;
-          }) => (
-            <FormItem>
-              <FormLabel>Prénom</FormLabel>
-              <FormControl>
-                <Input placeholder="Votre prénom" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+      <div className="flex flex-col items-center space-y-8">
+        <Image
+          src="/images/snowledge-logo.png"
+          alt="Snowledge Logo"
+          width={300}
+          height={75}
+          className="mb-8"
         />
-        <FormField
-          control={form.control}
-          name="lastName"
-          render={({
-            field,
-          }: {
-            field: ControllerRenderProps<FormValues, "lastName">;
-          }) => (
-            <FormItem>
-              <FormLabel>Nom</FormLabel>
-              <FormControl>
-                <Input placeholder="Votre nom" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({
-            field,
-          }: {
-            field: ControllerRenderProps<FormValues, "email">;
-          }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="votre@email.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="how"
-          render={({
-            field,
-          }: {
-            field: ControllerRenderProps<FormValues, "how">;
-          }) => (
-            <FormItem>
-              <FormLabel>Comment nous avez-vous connu ?</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8 w-full max-w-md"
+        >
+          <FormField
+            control={form.control}
+            name="firstName"
+            render={({
+              field,
+            }: {
+              field: ControllerRenderProps<FormValues, "firstName">;
+            }) => (
+              <FormItem>
+                <FormLabel>Prénom</FormLabel>
                 <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Sélectionnez une option" />
-                  </SelectTrigger>
+                  <Input placeholder="Votre prénom" {...field} />
                 </FormControl>
-                <SelectContent>
-                  <SelectItem value="search">Moteur de recherche</SelectItem>
-                  <SelectItem value="social">Réseaux sociaux</SelectItem>
-                  <SelectItem value="recommendation">Recommandation</SelectItem>
-                  <SelectItem value="other">Autre</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="why"
-          render={({
-            field,
-          }: {
-            field: ControllerRenderProps<FormValues, "why">;
-          }) => (
-            <FormItem>
-              <FormLabel>Pourquoi nous contactez-vous ?</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="lastName"
+            render={({
+              field,
+            }: {
+              field: ControllerRenderProps<FormValues, "lastName">;
+            }) => (
+              <FormItem>
+                <FormLabel>Nom</FormLabel>
                 <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Sélectionnez une raison" />
-                  </SelectTrigger>
+                  <Input placeholder="Votre nom" {...field} />
                 </FormControl>
-                <SelectContent>
-                  <SelectItem value="information">
-                    Demande d&apos;information
-                  </SelectItem>
-                  <SelectItem value="partnership">Partenariat</SelectItem>
-                  <SelectItem value="support">Support technique</SelectItem>
-                  <SelectItem value="other">Autre</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="language"
-          render={({
-            field,
-          }: {
-            field: ControllerRenderProps<FormValues, "language">;
-          }) => (
-            <FormItem>
-              <FormLabel>Langue préférée</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({
+              field,
+            }: {
+              field: ControllerRenderProps<FormValues, "email">;
+            }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Sélectionnez une langue" />
-                  </SelectTrigger>
+                  <Input placeholder="votre@email.com" {...field} />
                 </FormControl>
-                <SelectContent>
-                  <SelectItem value="fr">Français</SelectItem>
-                  <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="es">Español</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Envoyer</Button>
-      </form>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="how"
+            render={({
+              field,
+            }: {
+              field: ControllerRenderProps<FormValues, "how">;
+            }) => (
+              <FormItem>
+                <FormLabel>Comment nous avez-vous connu ?</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionnez une option" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="search">Moteur de recherche</SelectItem>
+                    <SelectItem value="social">Réseaux sociaux</SelectItem>
+                    <SelectItem value="recommendation">
+                      Recommandation
+                    </SelectItem>
+                    <SelectItem value="other">Autre</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="why"
+            render={({
+              field,
+            }: {
+              field: ControllerRenderProps<FormValues, "why">;
+            }) => (
+              <FormItem>
+                <FormLabel>Pourquoi nous contactez-vous ?</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionnez une raison" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="information">
+                      Demande d&apos;information
+                    </SelectItem>
+                    <SelectItem value="partnership">Partenariat</SelectItem>
+                    <SelectItem value="support">Support technique</SelectItem>
+                    <SelectItem value="other">Autre</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="language"
+            render={({
+              field,
+            }: {
+              field: ControllerRenderProps<FormValues, "language">;
+            }) => (
+              <FormItem>
+                <FormLabel>Langue préférée</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionnez une langue" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="fr">Français</SelectItem>
+                    <SelectItem value="en">English</SelectItem>
+                    <SelectItem value="es">Español</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button className="cursor-pointer" type="submit">
+            Envoyer
+          </Button>
+        </form>
+      </div>
     </Form>
   );
 }
