@@ -1,37 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Snowledge Register - Formulaire de Contact
 
-## Getting Started
+Une application Next.js moderne avec un formulaire de contact utilisant shadcn/ui et intégrant l'envoi d'emails via SMTP OVH.
 
-First, run the development server:
+## Fonctionnalités
+
+- Formulaire de contact moderne et réactif
+- Validation des champs en temps réel
+- Support multilingue (FR/EN/ES)
+- Envoi d'emails via SMTP OVH
+- Email de confirmation automatique
+- Interface utilisateur élégante avec shadcn/ui
+
+## Technologies Utilisées
+
+- [Next.js 14](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
+- [Nodemailer](https://nodemailer.com/)
+
+## Prérequis
+
+- Node.js 18.17 ou plus récent
+- npm ou yarn
+- Un compte SMTP OVH
+
+## Installation
+
+1. Clonez le dépôt :
+
+```bash
+git clone https://github.com/votre-username/snowledge-register.git
+cd snowledge-register
+```
+
+2. Installez les dépendances :
+
+```bash
+npm install
+```
+
+3. Créez un fichier `.env.local` à la racine du projet :
+
+```env
+EMAIL_PASSWORD=votre_mot_de_passe_smtp_ovh
+```
+
+## Configuration
+
+1. Configurez vos identifiants SMTP OVH dans `src/app/api/contact/route.ts` :
+
+```typescript
+const transporter = nodemailer.createTransport({
+  host: "ssl0.ovh.net",
+  port: 465,
+  secure: true,
+  auth: {
+    user: "votre_email@domaine.com",
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
+```
+
+## Développement
+
+Pour lancer l'application en mode développement :
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+L'application sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure du Projet
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+snowledge-register/
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── contact/
+│   │   │       └── route.ts
+│   │   ├── components/
+│   │   │   └── ContactForm.tsx
+│   │   └── page.tsx
+│   └── components/
+│       └── ui/
+├── public/
+├── .env.local
+├── package.json
+└── README.md
+```
 
-## Learn More
+## Formulaire
 
-To learn more about Next.js, take a look at the following resources:
+Le formulaire comprend les champs suivants :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Nom
+- Prénom
+- Adresse email
+- Comment nous avez-vous connu ? (menu déroulant)
+- Pourquoi nous contactez-vous ? (menu déroulant)
+- Langue préférée (menu déroulant)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Emails
 
-## Deploy on Vercel
+L'application envoie deux types d'emails :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Une notification à l'administrateur avec les détails du formulaire
+2. Un email de confirmation à l'utilisateur
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# snowledge-register
+## Déploiement
+
+1. Construisez l'application :
+
+```bash
+npm run build
+```
+
+2. Démarrez en production :
+
+```bash
+npm start
+```
+
+## Variables d'Environnement
+
+- `EMAIL_PASSWORD` : Mot de passe SMTP OVH
+
+## Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou à soumettre une pull request.
+
+## Licence
+
+MIT
+
+## Support
+
+Pour toute question ou assistance, veuillez contacter contact@snowledge.eu
