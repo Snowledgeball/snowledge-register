@@ -175,7 +175,7 @@ export function ContactForm() {
                 </FormControl>
                 <SelectContent>
                   <SelectItem value="information">
-                    Demande d'information
+                    Demande d&apos;information
                   </SelectItem>
                   <SelectItem value="partnership">Partenariat</SelectItem>
                   <SelectItem value="support">Support technique</SelectItem>
