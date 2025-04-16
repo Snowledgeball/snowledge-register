@@ -69,7 +69,7 @@ export function ContactForm() {
       }
 
       form.reset();
-      alert("Message envoyé avec succès !");
+      alert("Message envoyé avec succès !!");
     } catch (error) {
       console.error("Erreur:", error);
       alert("Une erreur est survenue lors de l'envoi du message.");
